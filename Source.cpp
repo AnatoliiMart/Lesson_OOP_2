@@ -52,7 +52,15 @@ public:
 			std::cout << "Date: " << day << "/" << month << "/" << year << std::endl;
 			std::cout << std::endl;
 		}
-	
+		~Student()
+		{
+			delete[] initials;
+			delete[] city;
+			delete[] phoneNumb;
+			delete[] country;
+			delete[] educationalInstitution;
+			delete[] groupNumber;
+		}
 
 };
 
