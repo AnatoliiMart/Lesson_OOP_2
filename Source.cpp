@@ -1,38 +1,54 @@
 #include <iostream>
-
-class MyClass
+class Student
 {
 public:
-	MyClass()																													 // конструктор по умолчанию
+	Student()														 // Constructor by default
 	{
 		std::cout << "Constructor by default" << std::endl;
-		x = 0;
+		name = nullptr;
+		age = 0;
 	}
-	MyClass(int a)																										// конструктор с параметрами
+	Student(const char* Name, int Age)   // Constructor by 2 param
 	{
 		std::cout << "Constructor with parameters" << std::endl;
-		x = a;
+		name = new char[strlen(Name) + 1];
+		strcpy_s(name, strlen(Name) + 1, Name);
+		age = Age;
+	}
+	Student(int Age)									  // Constructor by 1 param
+	{
+		std::cout << "Constructor with parameters" << std::endl;
+		age = Age;
+		name = nullptr;
 	}
 	void Output()
 	{
-		std::cout << x << std::endl;
-  }
-	~MyClass()
+		if (name == nullptr)
+		{
+			std::cout << "Empty object!" << std::endl;
+			return;
+		}
+		std::cout << "Name: " << name << std::endl;
+		std::cout << "Age: "  << age << std::endl;
+	}
+	~Student()
 	{
-		std::cout << "Destructor!" << std::endl;
+		std::cout << "Destruct" << std::endl;
+		delete[] name;
 	}
 private:
-	int x;
+	char* name;
+	int age;
 };
+
+
 
 int main()
 {
-	MyClass one;
-	one.Output();
-	MyClass two(12);
-	two.Output();
-
+	Student obj1("Oleg", 21);
+	obj1.Output();
 }
+	
 /*
  онструктор - спец метод, который вызываетс€ автоматически в момент создани€ объектов.
  онструктор не имеет типа возвращаемого значени€.
