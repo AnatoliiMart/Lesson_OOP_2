@@ -50,6 +50,7 @@ public:
 			std::cout << "Group number: " << groupNumber << std::endl;
 			std::cout << "Age: " << age << std::endl;
 			std::cout << "Date: " << day << "/" << month << "/" << year << std::endl;
+			std::cout << std::endl;
 		}
 	
 
